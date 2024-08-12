@@ -1,0 +1,16 @@
+{
+    "name": "specbee/storm_cms_page_builder",
+    "description": "Enhances the page building experience with Drupal Layout Builder",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "require": {
+        "drupal/layout_builder_browser": "^1.7",
+        "drupal/layout_builder_modal": "^1.2",
+        "drupal/layout_builder_operation_link": "^2.1",
+        "drupal/layout_builder_restrictions": "^3.0",
+        "drupal/layout_disable": "^2.0",
+        "drupal/layout_library": "^1.0@beta",
+        "drupal/media_library_form_element": "^2.1"
+    }
+}

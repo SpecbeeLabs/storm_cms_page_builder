@@ -1,0 +1,16 @@
+name: Storm CMS Page Builder
+type: module
+description: "A Page builder enhancing the ."
+version: VERSION
+core_version_requirement: ^9 || ^10
+package: Storm
+dependencies:
+  - drupal:layout_builder
+  - drupal:layout_discovery
+  - layout_builder_browser:layout_builder_browser
+  - layout_builder_modal:layout_builder_modal
+  - layout_builder_operation_link:layout_builder_operation_link
+  - layout_builder_restrictions:layout_builder_restrictions
+  - layout_disable:layout_disable
+  - layout_library:layout_library
+  - media_library_form_element:media_library_form_element
