@@ -9,8 +9,14 @@
         "drupal/layout_builder_modal": "^1.2",
         "drupal/layout_builder_operation_link": "^2.1",
         "drupal/layout_builder_restrictions": "^3.0",
-        "drupal/layout_disable": "^2.0",
         "drupal/layout_library": "^1.0@beta",
         "drupal/media_library_form_element": "^2.1"
+    },
+    "extra": {
+        "patches": {
+            "drupal/layout_builder_modal": {
+                "[#3214458] Move all Layout Builder operations into modal": "https://www.drupal.org/files/issues/2023-10-13/lb-operation-modal-3214458-14.patch"
+            }
+        }
     }
 }
