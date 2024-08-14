@@ -60,17 +60,17 @@ class StormLayout extends LayoutDefault implements ContainerFactoryPluginInterfa
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form['#attached']['library'][] = 'storm_cms_page_builder/form';
-
     $form['section_title'] = [
       '#type' => 'details',
       '#title' => $this->t('Section title'),
       '#weight' => 1,
     ];
 
-    $form['section_title']['markup'] = [
-      '#type' => 'markup',
-      '#markup' => '<p>' . $this->t('Provide an optional title to the layout section') . '</p>',
+    $form['section_title']['heading'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Title'),
+      '#description' => $this->t('Provide an optional title to the layout section'),
+      '#default_value' => $this->configuration['section_title']['heading'] ?? '',
     ];
 
     $form['section_title']['heading_style'] = [
@@ -85,12 +85,6 @@ class StormLayout extends LayoutDefault implements ContainerFactoryPluginInterfa
         'h6' => $this->t('H6'),
       ],
       '#default_value' => $this->configuration['section_title']['heading_style'] ?? 'h1',
-    ];
-
-    $form['section_title']['heading'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Title'),
-      '#default_value' => $this->configuration['section_title']['heading'] ?? '',
     ];
 
     $form['section_title']['heading_alignment'] = [
@@ -111,19 +105,27 @@ class StormLayout extends LayoutDefault implements ContainerFactoryPluginInterfa
     ];
 
     $form['section_background']['background_color'] = [
-      '#type' => 'radios',
+      '#type' => 'select',
       '#options' => $this->getColors(),
       '#default_value' => $this->configuration['section_background']['background_color'] ?? 'bg-none',
+      '#title' => $this->t('Background Color'),
     ];
 
-    $form['section_background']['background_media'] = [
+    $form['section_background']['image'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Background Image'),
+      '#weight' => 3,
+    ];
+
+    $form['section_background']['image']['background_media'] = [
       '#type' => 'media_library',
       '#allowed_bundles' => ['image'],
-      '#title' => $this->t('Background Image'),
+      '#title' => $this->t('Image'),
       '#default_value' => $this->configuration['section_background']['background_media'] ?? NULL,
       '#description' => $this->t('Upload or select a background image.'),
     ];
-    $form['section_background']['background_position'] = [
+
+    $form['section_background']['image']['background_position'] = [
       '#type' => 'select',
       '#title' => $this->t('Background image position'),
       '#options' => [
@@ -140,7 +142,7 @@ class StormLayout extends LayoutDefault implements ContainerFactoryPluginInterfa
       '#default_value' => $this->configuration['section_background']['background_position'] ?? 'center center',
     ];
 
-    $form['section_background']['background_size'] = [
+    $form['section_background']['image']['background_size'] = [
       '#type' => 'select',
       '#title' => $this->t('Background image size'),
       '#options' => [
@@ -150,7 +152,7 @@ class StormLayout extends LayoutDefault implements ContainerFactoryPluginInterfa
       '#default_value' => $this->configuration['section_background']['background_size'] ?? 'cover',
     ];
 
-    $form['section_background']['background_repeat'] = [
+    $form['section_background']['image']['background_repeat'] = [
       '#type' => 'select',
       '#title' => $this->t('Background image repeat'),
       '#options' => [
@@ -162,7 +164,7 @@ class StormLayout extends LayoutDefault implements ContainerFactoryPluginInterfa
       '#default_value' => $this->configuration['section_background']['background_repeat'] ?? 'no-repeat',
     ];
 
-    $form['section_background']['background_attachment'] = [
+    $form['section_background']['image']['background_attachment'] = [
       '#type' => 'select',
       '#title' => $this->t('Background attachment'),
       '#options' => [
@@ -243,14 +245,14 @@ class StormLayout extends LayoutDefault implements ContainerFactoryPluginInterfa
    * Helper method to build color options scheme.
    */
   private function getColors() {
-    $config = $this->configFactory->get('storm.layout_builder.settings')->get('background_colors');
+    $config = $this->configFactory->get('storm_cms.page_builder.style_settings')->get('background_colors');
     $colors = $this->getConfigValues($config);
 
     foreach ($colors as $class => $color) {
-      $options[$class] = "<span class='" . $class . "' title='" . $color . "'></span>";
+      $options[$class] = $color;
     }
 
-    $options = ['u-bg-none' => "<span class='u-bg-none' title='None'></span>"] + $options;
+    $options = ['bg-none' => $this->t("None")] + $options;
 
     return $options;
   }
@@ -259,7 +261,7 @@ class StormLayout extends LayoutDefault implements ContainerFactoryPluginInterfa
    * Helper method to get padding options.
    */
   private function getOptions($key) {
-    $config = $this->configFactory->get('storm.layout_builder.settings')->get($key);
+    $config = $this->configFactory->get('storm_cms.page_builder.style_settings')->get($key);
     return $this->getConfigValues($config);
   }
 
