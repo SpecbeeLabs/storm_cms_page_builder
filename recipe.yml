@@ -6,14 +6,14 @@ install:
   - layout_builder_modal
   - layout_builder_operation_link
   - layout_builder_restrictions
-  - layout_library
   - media_library_form_element
   - lb_section_extras
+  - section_library
 config:
   import:
     layout_builder_browser: "*"
     layout_builder_restrictions: "*"
-    layout_library: "*"
+    section_library: "*"
   actions:
     layout_builder_browser.settings:
       simple_config_update:
