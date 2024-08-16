@@ -1,7 +1,7 @@
 {
     "name": "specbee/storm_cms_page_builder",
     "description": "Enhances the page building experience with Drupal Layout Builder",
-    "type": "drupal-module",
+    "type": "drupal-recipe",
     "license": "GPL-2.0-or-later",
     "minimum-stability": "dev",
     "require": {
