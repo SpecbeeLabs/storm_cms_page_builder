@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {}
+id: card
+label: Card
+weight: null
+opened: true
+image_path: ""
+image_alt: ""

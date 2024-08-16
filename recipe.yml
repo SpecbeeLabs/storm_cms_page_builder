@@ -1,0 +1,31 @@
+name: Storm CMS Page Builder
+description: Enhances the page building experience with Drupal Layout Builder
+install:
+  - layout_builder
+  - layout_builder_browser
+  - layout_builder_modal
+  - layout_builder_operation_link
+  - layout_builder_restrictions
+  - layout_library
+  - media_library_form_element
+  - lb_section_extras
+config:
+  import:
+    layout_builder_browser: "*"
+    layout_builder_restrictions: "*"
+    layout_library: "*"
+  actions:
+    layout_builder_browser.settings:
+      simple_config_update:
+        use_modal: true
+    layout_builder_modal.settings:
+      simple_config_update:
+        use_modal:
+          add_block: add_block
+          choose_block: choose_block
+          choose_section: choose_section
+          configure_section: configure_section
+          remove_block: remove_block
+          remove_section: remove_section
+          update_block: update_block
+          choose_inline_block: choose_inline_block
