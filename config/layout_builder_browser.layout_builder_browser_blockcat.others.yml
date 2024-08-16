@@ -1,9 +1,0 @@
-langcode: en
-status: true
-dependencies: {}
-id: others
-label: Others
-weight: null
-opened: true
-image_path: ""
-image_alt: ""
