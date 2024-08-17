@@ -29,3 +29,13 @@ config:
           remove_section: remove_section
           update_block: update_block
           choose_inline_block: choose_inline_block
+    metatag.settings:
+      simple_config_update:
+        entity_type_groups.node.landing_page:
+          - basic
+          - advanced
+          - open_graph
+          - twitter_cards
+    workflows.workflow.editorial:
+      addNodeTypes:
+        - landing_page
