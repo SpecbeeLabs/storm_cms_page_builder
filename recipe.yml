@@ -1,5 +1,8 @@
 name: Storm CMS Page Builder
 description: Enhances the page building experience with Drupal Layout Builder
+recipes:
+  - storm_cms_content_type_base
+  - storm_cms_media
 install:
   - layout_builder
   - layout_builder_browser
