@@ -9,19 +9,21 @@ install:
   - layout_builder_operation_link
   - layout_builder_restrictions
   - media_library_form_element
-  - lb_section_extras
   - section_library
+  - storm_cms_layout_builder
 config:
   import:
     layout_builder_browser: "*"
     layout_builder_restrictions: "*"
     section_library: "*"
+    storm_cms_layout_builder: "*"
   actions:
     layout_builder_browser.settings:
       simple_config_update:
         use_modal: true
     layout_builder_modal.settings:
       simple_config_update:
+        modal_width: "1160"
         use_modal:
           add_block: add_block
           choose_block: choose_block
